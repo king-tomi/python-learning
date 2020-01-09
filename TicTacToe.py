@@ -1,11 +1,29 @@
-class TicTacToe:
-
-
+from PyQt5.QtWidgets import QApplication, QDialog, QHBoxLayout, QVBoxLayout, QCheckBox, QMainWindow
+from PyQt5 import QtGui, QtCore
+import sys
+class TicTacToe(QMainWindow):
     def __init__(self):
+        super().__init__()
+        self.title = "TicTacToe"
+        self.left = 800
+        self.top = 600
+        self.height = 600
+        self.width = 500
+
 
         self.board = [[""]*3 for i in range(3)]
         self.player = "X"
 
+        self.init_window()
+
+
+    def init_window(self):
+        self.setWindowTitle(self.title)
+        self.setGeometry(QtCore.QRect(self.left,self.top,self.height,self.width))
+        self.setFont(QtGui.QFont("Sanserif"))
+        self.show()
+
+        self.setStyleSheet("color: red")
 
     def mark(self):
         if self.winner() is not None:
@@ -22,6 +40,7 @@ class TicTacToe:
                 self.player = "O"
             else:
                 self.player = "X"
+            print(self)
 
         if self.board[i][j] == " ":
             print("Board position empty")
@@ -53,6 +72,6 @@ class TicTacToe:
         return "\n-----\n".join(rows)
 
 if __name__ == "__main__":
+    app = QApplication(sys.argv)
     game = TicTacToe()
-    game.mark()
-    game.winner()
+    sys.exit(app.exec())
