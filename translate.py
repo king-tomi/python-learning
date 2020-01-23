@@ -1,4 +1,7 @@
-class Translate:
+from PyQt5.QtWidgets import QApplication,QMainWindow,QLineEdit
+from PyQt5 import QtGui,QtCore
+import sys
+class Translate(QMainWindow):
     """A python program that models a game for translating between languages.
     
        Last Modified: 13 - 12 - 2019
@@ -15,6 +18,11 @@ class Translate:
              "Girl" : "Omodebinrin",
              "Father" : "Baba",
              "Mother" : "Iya"}
+
+
+    def __init__(self):
+        super().__init__()
+        self.initWindow()
 
 
     def play_game(self):
